@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Renée Brecht-Mangiafico — project and program manager with PMP, MPA, and Microsoft AI-900 credentials, specializing in digital transformation and public-sector project leadership in New Jersey.">
+  <title>About — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= PAGE HEADER ======= -->
+  <header class="page-header">
+    <h1>About</h1>
+  </header>
+
+  <!-- ======= MAIN ======= -->
+  <main>
+
+    <!-- Bio -->
+    <section class="section about-bio fade-in" aria-label="Biography">
+      <p>I'm a project and program manager with 15+ years of experience leading initiatives across government, institutional, and corporate environments in New Jersey.</p>
+      <p>My work sits at a specific intersection: I understand public-sector constraints and stakeholder complexity, I hold a PMP and an MPA, and I've spent the last several years deliberately building hands-on technical capability — earning a Microsoft AI-900 certification, completing data and automation coursework, and learning to use AI tools as a genuine productivity lever rather than a talking point.</p>
+      <p>That combination is the thing I keep coming back to. A lot of PMs hand off technical work and manage the output. I prefer to understand what I'm managing — and increasingly, to build parts of it myself. This site is an example of that: I directed Claude to build it, using a workflow I designed and can explain to anyone who asks.</p>
+    </section>
+
+    <!-- Intersection block — visually distinct pull quote -->
+    <blockquote class="intersection-block fade-in" style="animation-delay:0.15s">
+      The work I find most compelling sits at the intersection of project management, business intelligence, and AI. Organizations — especially in government and the public sector — are sitting on data they can't use and facing technology change they're not structured to manage. I'm deliberately building the capability to help with both: not as a technologist, but as a PM who understands the tools well enough to lead the work intelligently.
+    </blockquote>
+
+    <!-- Credentials -->
+    <section class="section fade-in" aria-label="Credentials and education" style="animation-delay:0.25s">
+      <h2 class="section-heading">Credentials &amp; education</h2>
+      <ul class="credentials-list">
+        <li>
+          <span>
+            <strong>PMP</strong> — Project Management Professional &nbsp;
+            <!-- PMI credential registry link — verify this is still the correct URL -->
+            <a href="https://www.pmi.org/certifications/certification-resources/registry" target="_blank" rel="noopener noreferrer">Verify on PMI ↗</a>
+          </span>
+        </li>
+        <li><span><strong>Microsoft AI-900</strong> — Azure AI Fundamentals (April 2026)</span></li>
+        <li><span><strong>Google AI Fluency</strong> Certification</span></li>
+        <li><span><strong>MPA</strong> — Master of Public Administration</span></li>
+        <li><span><strong>Villanova University</strong> — Project Management Certificate</span></li>
+        <li><span><strong>Villanova University</strong> — IT Project Management Certificate</span></li>
+        <li><span><strong>MS Learn</strong> — Business Intelligence Foundations (completed)</span></li>
+      </ul>
+    </section>
+
+    <!-- Civic roles -->
+    <section class="section fade-in" aria-label="Civic roles" style="animation-delay:0.33s">
+      <h2 class="section-heading">Civic roles</h2>
+      <p class="civic-block">Currently serving as Secretary of the Greenwich Township Land Use Board and as a member of the Cumberland County Health Advisory Board — active roles in South Jersey municipal and public health governance.</p>
+    </section>
+
+    <!-- Thought leadership -->
+    <section class="section fade-in" aria-label="Thought leadership" style="animation-delay:0.40s">
+      <h2 class="section-heading">Thought leadership</h2>
+      <p class="thought-block">
+        I write occasionally about applying agile frameworks to everyday professional life. Find that series on
+        <!-- TODO: Replace href="#linkedin" with actual LinkedIn profile URL, e.g. https://www.linkedin.com/in/yourprofile -->
+        <a href="#linkedin">LinkedIn</a>.
+      </p>
+    </section>
+
+    <!-- Location -->
+    <p class="location-line fade-in" style="animation-delay:0.46s">
+      Based in South Jersey. Open to roles throughout the NJ corridor — South Jersey through Trenton and New Brunswick — as well as Philadelphia, Delaware, and remote.
+    </p>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <!-- TODO: Replace href="#linkedin" with actual LinkedIn profile URL -->
+        <a href="#linkedin">LinkedIn</a>
+        <!-- TODO: Replace href value with actual email address -->
+        <a href="mailto:placeholder@email.com">Email</a>
+        <!-- TODO: Replace href="#github" with actual GitHub profile URL -->
+        <a href="#github">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>

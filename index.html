@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Renée Brecht-Mangiafico — AI-Augmented Project Manager with 15+ years of experience in government, institutional, and corporate environments in New Jersey. PMP, MPA, Microsoft AI-900.">
+  <title>Renée Brecht-Mangiafico — AI-Augmented Project Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= HERO ======= -->
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">AI-Augmented Project Manager</span>
+      <h1>Delivering complex projects where technology, data, and organizational change intersect.</h1>
+      <p class="hero-body">With 15+ years in project and program management — and credentials spanning PMP, MPA, and Microsoft AI-900 — I help agencies, institutions, and businesses navigate digital transformation without losing sight of what actually needs to get done.</p>
+      <div class="hero-actions">
+        <a href="portfolio.html" class="btn btn-primary">View portfolio</a>
+        <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="badge-row" role="list" aria-label="Credentials">
+        <span class="badge" role="listitem">PMP</span>
+        <span class="badge" role="listitem">Microsoft AI-900</span>
+        <span class="badge" role="listitem">Google AI Fluency</span>
+        <span class="badge" role="listitem">MPA</span>
+        <span class="badge" role="listitem">Villanova PM Certificate</span>
+        <span class="badge" role="listitem">Villanova IT PM Certificate</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= PREVIEW CARDS ======= -->
+  <section class="preview-section" aria-label="Selected work">
+    <div class="preview-header fade-in">
+      <h2>Selected work</h2>
+      <p>A few recent projects — <a href="portfolio.html">view the full portfolio →</a></p>
+    </div>
+    <div class="cards-preview">
+
+      <article class="card">
+        <span class="card-category">Consulting · AI strategy</span>
+        <h3>QBC AI Roadmap</h3>
+        <p>Developed an AI readiness roadmap and implementation strategy for QBC, identifying practical use cases, tooling recommendations, and a phased adoption plan.</p>
+        <div class="card-footer">
+          <span class="status-badge status-live">Live</span>
+          <a href="portfolio.html" class="card-link">View project →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-category">Government · WordPress/Kadence</span>
+        <h3>Lawrence Township Municipal Website</h3>
+        <p>Project managed and executed the build of the Lawrence Township municipal website. Coordinated stakeholder input and managed content migration.</p>
+        <div class="card-footer">
+          <span class="status-badge status-soon">Coming soon</span>
+          <a href="portfolio.html" class="card-link">View project →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-category">Process automation</span>
+        <h3>n8n Automation Workflows</h3>
+        <p>Built and documented a series of automated workflows using n8n, demonstrating practical no-code/low-code automation capability for organizational use cases.</p>
+        <div class="card-footer">
+          <span class="status-badge status-soon">Coming soon</span>
+          <a href="portfolio.html" class="card-link">View project →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <!-- TODO: Replace href="#linkedin" with actual LinkedIn profile URL, e.g. https://www.linkedin.com/in/yourprofile -->
+        <a href="#linkedin">LinkedIn</a>
+        <!-- TODO: Replace href value with actual email address, e.g. mailto:renee@reneemangiafico.com -->
+        <a href="mailto:placeholder@email.com">Email</a>
+        <!-- TODO: Replace href="#github" with actual GitHub profile URL, e.g. https://github.com/yourusername -->
+        <a href="#github">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    // Close menu on link click (mobile UX)
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
