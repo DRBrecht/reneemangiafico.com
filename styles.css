@@ -711,3 +711,107 @@ main {
     padding: 1rem 1.25rem;
   }
 }
+
+/* =========================================
+   SPLIT HERO — index.html photo layout
+   ========================================= */
+
+.hero-split {
+  padding: 4rem 2rem 0;
+  text-align: left;
+}
+
+.hero-split .hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: flex-end;
+}
+
+.hero-text {
+  padding-bottom: 4.5rem;
+}
+
+.hero-split .hero-actions {
+  justify-content: flex-start;
+}
+
+.hero-split .badge-row {
+  justify-content: flex-start;
+}
+
+.hero-photo-wrap {
+  align-self: flex-end;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  flex-shrink: 0;
+}
+
+.hero-photo-img {
+  width: 100%;
+  display: block;
+  border-radius: 12px 12px 0 0;
+  max-height: 580px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* =========================================
+   ABOUT PAGE — headshot
+   ========================================= */
+
+.about-photo-wrap {
+  float: right;
+  margin: 0.25rem 0 1.5rem 2.5rem;
+}
+
+.about-photo-img {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid var(--teal-border);
+  display: block;
+}
+
+/* =========================================
+   RESPONSIVE additions for photos
+   ========================================= */
+
+@media (max-width: 768px) {
+  .hero-split {
+    padding: 4rem 1.5rem 3.5rem;
+    text-align: center;
+  }
+
+  .hero-split .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-photo-wrap {
+    display: none;
+  }
+
+  .hero-text {
+    padding-bottom: 0;
+  }
+
+  .hero-split .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-split .badge-row {
+    justify-content: center;
+  }
+
+  .about-photo-wrap {
+    float: none;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
