@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Strategy &amp; Implementation Engagement — case study by Renée Brecht-Mangiafico. Full-scope AI roadmap for a regional broadcast media organization.">
+  <title>AI Strategy Engagement — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Case study page layout ── */
+
+    .cs-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .cs-back {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .cs-back:hover { color: var(--teal-accent); }
+
+    .cs-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .cs-eyebrow span { color: var(--teal-card-border); }
+
+    .cs-wrap h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--teal-dark);
+    }
+
+    .cs-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .cs-intro {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--teal-pale);
+      margin: 2rem 0;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Deliverables grid */
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .deliverable {
+      background: var(--teal-pale);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .deliverable-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable p {
+      font-size: 0.855rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--teal-card-border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .metric {
+      background: var(--teal-pale);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .metric-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Footer row */
+    .cs-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cs-attribution {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cs-attribution strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cs-cta {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .cs-cta:hover { border-bottom-color: var(--teal-accent); }
+
+    @media (max-width: 520px) {
+      .cs-wrap h1 { font-size: 1.5rem; }
+      .cs-footer-row { flex-direction: column; align-items: flex-start; }
+      .cs-wrap { padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= CONTENT ======= -->
+  <div class="cs-wrap">
+
+    <a href="portfolio.html" class="cs-back">← Back to portfolio</a>
+
+    <div class="cs-eyebrow">
+      <span>Case Study</span>
+      <span>—</span>
+      <span>April 2026</span>
+    </div>
+
+    <h1>AI Strategy &amp; Implementation Engagement</h1>
+    <p class="cs-subtitle">Regional Broadcast Media Organization &nbsp;·&nbsp; South Jersey</p>
+
+    <p class="cs-intro">A full-scope AI strategy and implementation engagement for a 40-year community broadcaster serving a regional cable and FM radio audience. The client needed to move from awareness to action — understanding which AI tools were actually worth adopting, what they would cost, how to implement them, and how to fund the transition. The engagement produced four original research documents and a nine-initiative scope of work totaling over 30,000 words of original analysis and planning.</p>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">What was delivered</p>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <p class="deliverable-title">AI Integration Research Report</p>
+        <p>Current-state analysis of AI tools purpose-built for community broadcasters — transcription, sports automation, ad production, radio automation, archive management, and newsletter infrastructure. Includes a full implementation stack under $400/month and revenue projections of $100K–$350K annually.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">Nine-Initiative Scope of Work</p>
+        <p>Phased implementation plans for each initiative — including tasks, roles, tool budgets, success criteria, and risk mitigations. Covered ADA captioning compliance, sports highlight automation, AI ad production, a community newsletter, media archive digitization, mental health programming, arts partnerships, workforce development, and AI consulting as a revenue stream.</p>
+      </div>
+      <div class="deliverable">
+        <p class="deliverable-title">AI Social Media Strategy</p>
+        <p>Platform-by-platform strategy incorporating AI tools for clip automation, scheduling, and analytics. Included teen audience data analysis, ADA captioning compliance guidance, and a roadmap for reaching audiences beyond the client's existing Facebook presence — without adding staff.</p>
+      </div>
+    </div>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Technical skills demonstrated</p>
+
+    <div class="tags">
+      <span class="tag">n8n workflow automation</span>
+      <span class="tag">AI tool stack architecture</span>
+      <span class="tag">API integration planning</span>
+      <span class="tag">Revenue modeling</span>
+      <span class="tag">ADA / WCAG 2.1 AA compliance</span>
+      <span class="tag">Grant-fundable implementation narrative</span>
+      <span class="tag">Sector-specific consulting frameworks</span>
+      <span class="tag">Deepgram · Claude API · Opus Clip · Waymark</span>
+    </div>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Scope at a glance</p>
+
+    <div class="metrics">
+      <div class="metric">
+        <span class="metric-number">9</span>
+        <span class="metric-label">implementation initiatives</span>
+      </div>
+      <div class="metric">
+        <span class="metric-number">4</span>
+        <span class="metric-label">original research documents</span>
+      </div>
+      <div class="metric">
+        <span class="metric-number">$350K</span>
+        <span class="metric-label">projected annual revenue upside</span>
+      </div>
+      <div class="metric">
+        <span class="metric-number">&lt;$400</span>
+        <span class="metric-label">full monthly tool stack</span>
+      </div>
+    </div>
+
+    <hr class="cs-divider">
+
+    <div class="cs-footer-row">
+      <p class="cs-attribution">
+        Work by <strong>Renée Brecht-Mangiafico</strong>, Mangiafico Management &amp; Consulting &nbsp;·&nbsp; April 2026<br>
+        Client details withheld per standard confidentiality practice.
+      </p>
+      <a class="cs-cta" href="mailto:rbrecht.mangiafico@gmail.com?subject=Work sample request — broadcast media AI engagement">Request work samples →</a>
+    </div>
+
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/">LinkedIn</a>
+        <a href="mailto:rbrecht.mangiafico@gmail.com">Email</a>
+        <a href="https://github.com/DRBrecht/">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+      <p class="footer-meta">Built with Claude Code. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
