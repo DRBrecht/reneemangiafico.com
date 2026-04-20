@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume — Renée Brecht-Mangiafico, PMP. 20+ years leading programs across government, nonprofit, and consulting environments in New Jersey.">
+  <title>Resume — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Resume page layout ── */
+    :root {
+      --text-mid:   #5F5E5A;
+      --text-light: #888780;
+      --border:     #D3D1C7;
+    }
+
+    /* Resume hero — lighter treatment than main site hero */
+    .resume-hero {
+      background: var(--teal-mid);
+      color: #fff;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    .resume-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #fff;
+    }
+    .resume-hero .tagline {
+      font-size: 0.925rem;
+      color: var(--teal-pale);
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Two-column layout */
+    .resume-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Sidebar */
+    aside { position: sticky; top: 76px; }
+    .sidebar-section { margin-bottom: 1.75rem; }
+    .sidebar-section h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal-mid);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--teal-pale);
+    }
+    .inline-list {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .cred-list { list-style: none; }
+    .cred-list li {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.4;
+    }
+    .cred-list li:last-child { border-bottom: none; }
+    .cred-list li strong {
+      display: block;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.82rem;
+    }
+    .cred-badge {
+      display: inline-block;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.2rem;
+    }
+    .cred-badge a { color: inherit; text-decoration: none; }
+    .sidebar-contact a {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--teal-mid);
+      text-decoration: none;
+      padding: 0.1rem 0;
+      transition: color 0.2s;
+    }
+    .sidebar-contact a:hover { color: var(--teal-accent); }
+    .sidebar-contact p {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    /* Main content */
+    .resume-main section { margin-bottom: 2rem; }
+    .resume-section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--teal-pale);
+    }
+
+    /* Summary */
+    .summary p {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Highlights table */
+    .highlights-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .highlights-table tr { border-bottom: 1px solid var(--border); }
+    .highlights-table tr:last-child { border-bottom: none; }
+    .highlights-table td { padding: 0.55rem 0.4rem; vertical-align: top; }
+    .highlights-table td:first-child {
+      font-weight: 500;
+      color: var(--text);
+      width: 34%;
+      padding-right: 0.75rem;
+    }
+    .highlights-table td:nth-child(2) {
+      color: var(--teal-mid);
+      font-size: 0.77rem;
+      width: 22%;
+      font-weight: 500;
+    }
+    .highlights-table td:last-child { color: var(--text-mid); }
+    .highlights-table tr:hover td { background: var(--teal-pale); }
+
+    /* Experience */
+    .job { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      margin-bottom: 0.1rem;
+    }
+    .job-org {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.975rem;
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+    .job-location { font-size: 0.77rem; color: var(--text-light); }
+    .job-arc { font-size: 0.77rem; color: var(--text-light); font-style: italic; margin-bottom: 0.6rem; }
+
+    .role { margin-bottom: 0.75rem; }
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .role-title { font-weight: 600; font-size: 0.875rem; color: var(--text); }
+    .role-dates { font-size: 0.77rem; color: var(--text-light); }
+
+    .role ul { list-style: none; padding-left: 0; }
+    .role ul li {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      padding: 0.15rem 0 0.15rem 1rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .role ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--teal-light);
+    }
+
+    /* Education */
+    .edu-item { margin-bottom: 0.75rem; }
+    .edu-degree { font-weight: 500; font-size: 0.875rem; color: var(--text); }
+    .edu-school { font-size: 0.82rem; color: var(--text-mid); }
+
+    /* Lists */
+    .plain-list { list-style: none; }
+    .plain-list li {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      padding: 0.15rem 0 0.15rem 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .plain-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--teal-light);
+    }
+
+    /* Download strip */
+    .download-strip {
+      background: var(--teal-pale);
+      border-top: 1px solid var(--teal-border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .download-strip p { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 0.75rem; }
+
+    /* Print */
+    @media print {
+      .site-nav, .resume-hero .hero-actions, .download-strip, .site-footer { display: none; }
+      .resume-hero { padding: 1rem; }
+      .resume-container { padding: 1rem; gap: 1.5rem; }
+      body { font-size: 13px; }
+      aside { position: static; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .resume-container { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 1rem 3rem; }
+      aside { position: static; }
+      .highlights-table td:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= HERO ======= -->
+  <div class="resume-hero">
+    <h1>Renée Brecht-Mangiafico</h1>
+    <p class="tagline">PMP · AI-Augmented Project Manager · Government &amp; Institutional Digital Transformation</p>
+    <div class="hero-actions">
+      <a href="./resume.pdf" download class="btn btn-primary">Download PDF</a>
+      <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- ======= CONTENT ======= -->
+  <div class="resume-container">
+
+    <aside>
+
+      <div class="sidebar-section">
+        <h3>Credentials</h3>
+        <ul class="cred-list">
+          <li>
+            <strong>PMP</strong>
+            PMI #4308524 · Valid Feb 2029
+            <span class="cred-badge"><a href="https://www.pmi.org/certifications/registry" target="_blank" rel="noopener">Verify ↗</a></span>
+          </li>
+          <li>
+            <strong>AI-900</strong>
+            Microsoft Azure AI Fundamentals<br>#3EE3CF-3EEF4A
+          </li>
+          <li>
+            <strong>MPA</strong>
+            University of South Dakota
+          </li>
+          <li>
+            <strong>Graduate Certificates</strong>
+            PM &amp; IS/IT PM · Villanova University
+          </li>
+          <li>
+            <strong>NJ CE License K–6</strong>
+            #01839221 · Valid Nov 2027
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Core Competencies</h3>
+        <p class="inline-list">Project &amp; Program Management · Schedule &amp; Milestone Planning · Stakeholder Engagement · Risk &amp; Scope Management · AI Integration &amp; Strategy · Workflow Automation · Agile / Kanban · Grant &amp; Compliance Management · Budget &amp; Vendor Coordination · Web Project Management</p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Tools</h3>
+        <p class="inline-list">Trello · Asana · Smartsheet · n8n · Microsoft Azure · WordPress / Kadence · Microsoft Office · Python (in progress)</p>
+      </div>
+
+      <div class="sidebar-section sidebar-contact">
+        <h3>Contact</h3>
+        <a href="mailto:rbrecht.mangiafico@gmail.com">rbrecht.mangiafico@gmail.com</a>
+        <a href="tel:6098056270">(609) 805-6270</a>
+        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <p>South Jersey · Open to hybrid/remote across NJ, Philadelphia &amp; Delaware corridor</p>
+      </div>
+
+    </aside>
+
+    <main class="resume-main">
+
+      <section class="summary">
+        <h2 class="resume-section-heading">Professional Summary</h2>
+        <p>Project Management Professional (PMP) with 20+ years of experience building things that don't exist yet — programs, departments, systems, and infrastructure across government, nonprofit, and consulting environments. Pattern of being brought in when something needs to be created from scratch: founding employee multiple times, department builder, systems implementer. Leaves organizations more structured, better documented, and more capable than she found them. Currently integrating AI strategy and workflow automation into project delivery practice.</p>
+      </section>
+
+      <section>
+        <h2 class="resume-section-heading">Selected Project Highlights</h2>
+        <table class="highlights-table">
+          <tbody>
+            <tr>
+              <td>Code Blue Millville</td>
+              <td>Volunteer Initiative</td>
+              <td>Identified critical service gap; designed and deployed emergency shelter program in 21 days with no budget or mandate</td>
+            </tr>
+            <tr>
+              <td>Quinn Broadcasting AI Roadmap</td>
+              <td>Mangiafico M&amp;C</td>
+              <td>Developed AI integration roadmap and recommendations for regional broadcaster</td>
+            </tr>
+            <tr>
+              <td>Municipal &amp; Community Websites</td>
+              <td>Mangiafico M&amp;C</td>
+              <td>Full-lifecycle builds: Lawrence Township, Greenwich Township, Greenwich Rec Committee</td>
+            </tr>
+            <tr>
+              <td>Regional Science Summit</td>
+              <td>Partnership for DE Estuary</td>
+              <td>PM for 300+ attendee multi-jurisdictional event — full lifecycle scope through closeout</td>
+            </tr>
+            <tr>
+              <td>Veterans Programming Launch</td>
+              <td>Levoy Theatre</td>
+              <td>Built veterans arts program from zero; coordinated with NJ State Veterans Home</td>
+            </tr>
+            <tr>
+              <td>Enterprise System Rollout</td>
+              <td>Millville Rescue Squad</td>
+              <td>Full enterprise implementation across 200-person org — developer coordination, configuration, migration, training</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="resume-section-heading">Experience</h2>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Levoy Theatre</span>
+            <span class="job-location">Millville, NJ</span>
+          </div>
+          <p class="job-arc">14-year institutional relationship · 2011–2025</p>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Director of Education</span>
+              <span class="role-dates">June 2022 – November 2025</span>
+            </div>
+            <ul>
+              <li>Expanded department into veterans, neurodivergent, and creative aging programming — significantly growing reach and diversity</li>
+              <li>Managed 30+ concurrent public programs annually across multiple locations serving 3,000+ participants</li>
+              <li>Led seasonal staff of 3–15; oversaw budget, purchase orders, and vendor contracts</li>
+              <li>Project lead for bi-county, multi-site festival — full logistics, scheduling, and cross-district coordination</li>
+              <li>Secured and managed $50K+ annually in grant funding; tracked NEA deliverables and ensured federal/state compliance</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Independent Contractor, Consultant &amp; Volunteer</span>
+              <span class="role-dates">2016–2018</span>
+            </div>
+            <ul>
+              <li>Revived Cumberland County Teen Arts Festival — wrote grants, managed relaunch coordination while employed full-time elsewhere</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-title">Founding Employee</span>
+              <span class="role-dates">2011–2013</span>
+            </div>
+            <ul>
+              <li>Contributed across marketing, web development, IT setup, ticketing system implementation, and vendor coordination during organizational launch</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Partnership for the Delaware Estuary</span>
+            <span class="job-location">Wilmington, DE</span>
+          </div>
+          <p class="job-arc">Director of Education &amp; Outreach · June 2017–June 2019 · Position eliminated, organizational restructuring</p>
+          <div class="role"><ul>
+            <li>Directed 7-person department with $1M annual budget across multi-jurisdictional programs</li>
+            <li>Led planning and execution of 300+ attendee regional science summit — full project lifecycle</li>
+            <li>Coordinated bi-state programming across NJ and DE partners; developed work plans and tracked deliverables</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">American Littoral Society</span>
+            <span class="job-location">Millville, NJ</span>
+          </div>
+          <p class="job-arc">Director, Delaware Bayshore · February 2013–January 2016 · Left for government opportunity</p>
+          <div class="role"><ul>
+            <li>Managed $800K+ William Penn Foundation initiative across 9-organization coalition — aligned scope, milestones, and partner contributions</li>
+            <li>Led post-Hurricane Sandy coastal recovery coordination with federal, state, and municipal partners</li>
+            <li>Chaired regional task force developing a 3-year strategic plan</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Cumberland County Improvement Authority</span>
+          </div>
+          <p class="job-arc">Associate Director of Economic Development · Bridgeton, NJ · January 2016–June 2017 · Left for career advancement</p>
+          <div class="role"><ul>
+            <li>Managed FEMA reimbursement documentation following Winter Storm Jonas — multi-department compliance coordination</li>
+            <li>Supported East Point Lighthouse reconstruction — contractor, stakeholder, and regulatory coordination</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Millville Rescue Squad</span>
+            <span class="job-location">Millville, NJ</span>
+          </div>
+          <p class="job-arc">IT Technician / Tech Assistant · 2010–2011 · Position eliminated, department outsourced</p>
+          <div class="role"><ul>
+            <li>Coordinated full enterprise system rollout across 200-person organization — developer liaison, configuration, data population, and full staff training</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Mangiafico Management &amp; Consulting</span>
+            <span class="job-location">Greenwich, NJ</span>
+          </div>
+          <p class="job-arc">Principal · 2019–Present · Concurrent consulting practice</p>
+          <div class="role"><ul>
+            <li>PM consulting, AI strategy, and website development for government and institutional clients</li>
+            <li>Municipal website builds: Lawrence Township and Greenwich Township — full lifecycle, requirements through launch</li>
+            <li>Quinn Broadcasting — AI integration roadmap and strategy recommendations for regional broadcaster</li>
+            <li>Workflow automation portfolio using n8n — four documented automations available for demonstration</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Greenwich Township</span>
+            <span class="job-location">Greenwich, NJ</span>
+          </div>
+          <p class="job-arc">Land Use Board Secretary · 2019–Present</p>
+          <div class="role"><ul>
+            <li>Coordinate complex multi-party regulatory processes; maintain OPMA-compliant documentation systems</li>
+            <li>Developed and maintain township website; manage escrow accounts, applications, and official correspondence</li>
+          </ul></div>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-org">Citizens United to Protect the Maurice River</span>
+            <span class="job-location">Millville, NJ</span>
+          </div>
+          <p class="job-arc">Associate Director — Founding Employee · Approx. 2004–2010</p>
+          <div class="role"><ul>
+            <li>Founding employee — built and launched new programs, coordinated volunteers, and created organizational web presence from inception</li>
+          </ul></div>
+        </div>
+
+      </section>
+
+      <section>
+        <h2 class="resume-section-heading">Education</h2>
+        <div class="edu-item">
+          <p class="edu-degree">Master of Public Administration</p>
+          <p class="edu-school">University of South Dakota</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-degree">Graduate Certificate, Project Management &amp; Graduate Certificate, IS/IT Project Management</p>
+          <p class="edu-school">Villanova University · 18-month dual program</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-degree">Bachelor of Arts, Social Science</p>
+          <p class="edu-school">Bethany University</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="resume-section-heading">Leadership &amp; Community</h2>
+        <ul class="plain-list">
+          <li>Environmental Leadership Program — Senior Fellow</li>
+          <li>Leadership Cumberland County — Graduate</li>
+          <li>Cumberland County Health Advisory Board — Member, 2019–Present</li>
+          <li>PMI NJ Chapter — Active Member</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ======= DOWNLOAD STRIP ======= -->
+  <div class="download-strip">
+    <p>Looking for a PDF version?</p>
+    <a href="./resume.pdf" download class="btn btn-primary">Download PDF</a>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/">LinkedIn</a>
+        <a href="mailto:rbrecht.mangiafico@gmail.com">Email</a>
+        <a href="https://github.com/DRBrecht/">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
