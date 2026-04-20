@@ -516,7 +516,7 @@ main {
 }
 
 .thought-block {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
