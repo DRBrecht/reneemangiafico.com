@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="n8n Workflow Automation — work sample by Renée Brecht-Mangiafico. Four demonstration workflows showing practical no-code automation.">
+  <title>n8n Workflow Automation — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Case study page layout ── */
+
+    .cs-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .cs-back {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .cs-back:hover { color: var(--teal-accent); }
+
+    .cs-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .cs-eyebrow span { color: var(--teal-card-border); }
+
+    .cs-wrap h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--teal-dark);
+    }
+
+    .cs-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .cs-intro {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--teal-pale);
+      margin: 2rem 0;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Video embed */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--teal-dark);
+      margin-bottom: 2rem;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* Workflow cards */
+    .workflows {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .workflow {
+      background: var(--teal-pale);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .workflow-number {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .workflow-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .workflow p {
+      font-size: 0.855rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--teal-card-border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    /* Footer row */
+    .cs-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cs-attribution {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cs-attribution strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cs-cta {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .cs-cta:hover { border-bottom-color: var(--teal-accent); }
+
+    @media (max-width: 520px) {
+      .cs-wrap h1 { font-size: 1.5rem; }
+      .cs-footer-row { flex-direction: column; align-items: flex-start; }
+      .cs-wrap { padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= CONTENT ======= -->
+  <div class="cs-wrap">
+
+    <a href="portfolio.html" class="cs-back">← Back to portfolio</a>
+
+    <div class="cs-eyebrow">
+      <span>Work Sample</span>
+      <span>—</span>
+      <span>2025–2026</span>
+    </div>
+
+    <h1>n8n Workflow Automation</h1>
+    <p class="cs-subtitle">Four demonstration workflows &nbsp;·&nbsp; No-code automation</p>
+
+    <p class="cs-intro">These four short videos demonstrate practical automation workflows built in n8n — a no-code/low-code automation platform. Each workflow solves a real business problem: routing form data, triggering confirmations, maintaining audit trails, and connecting users to AI. These are the building blocks of the larger automation pipelines I design for client engagements.</p>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Playlist — all four workflows</p>
+
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="n8n automation workflow demonstrations">
+      </iframe>
+    </div>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">What each workflow demonstrates</p>
+
+    <div class="workflows">
+
+      <div class="workflow">
+        <p class="workflow-number">Workflow 01</p>
+        <p class="workflow-title">Lead notification via Google Forms &amp; Gmail</p>
+        <p>A form submission triggers an automated Gmail notification to the right person — instantly, without manual monitoring. Demonstrates webhook triggers, conditional routing, and Gmail API integration.</p>
+      </div>
+
+      <div class="workflow">
+        <p class="workflow-number">Workflow 02</p>
+        <p class="workflow-title">Email confirmation with audit trail</p>
+        <p>Sends a confirmation email to the submitter and writes a timestamped record to a log — creating a lightweight audit trail with no database required. Demonstrates multi-step pipelines and data persistence.</p>
+      </div>
+
+      <div class="workflow">
+        <p class="workflow-number">Workflow 03</p>
+        <p class="workflow-title">Form submission to confirmation</p>
+        <p>An end-to-end intake workflow — form submission (via a platform such as JotForm) triggers automated confirmation messaging back to the user. Demonstrates third-party form integration and response automation.</p>
+      </div>
+
+      <div class="workflow">
+        <p class="workflow-number">Workflow 04</p>
+        <p class="workflow-title">AI-powered Q&amp;A for website embedding</p>
+        <p>A user submits a question; the workflow routes it to an AI model and returns the answer — designed to be embedded in a website or platform as a lightweight AI assistant. Demonstrates Claude/OpenAI API chaining within an n8n pipeline.</p>
+      </div>
+
+    </div>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Tools &amp; skills demonstrated</p>
+
+    <div class="tags">
+      <span class="tag">n8n</span>
+      <span class="tag">Webhook triggers</span>
+      <span class="tag">Google Forms integration</span>
+      <span class="tag">Gmail API</span>
+      <span class="tag">JotForm integration</span>
+      <span class="tag">Multi-step pipeline design</span>
+      <span class="tag">Audit trail logging</span>
+      <span class="tag">Claude / OpenAI API chaining</span>
+      <span class="tag">Embeddable AI assistant</span>
+    </div>
+
+    <hr class="cs-divider">
+
+    <div class="cs-footer-row">
+      <p class="cs-attribution">
+        Work by <strong>Renée Brecht-Mangiafico</strong>, Mangiafico Management &amp; Consulting
+      </p>
+      <a class="cs-cta" href="https://youtube.com/playlist?list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH" target="_blank" rel="noopener">Watch on YouTube →</a>
+    </div>
+
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/">LinkedIn</a>
+        <a href="mailto:rbrecht.mangiafico@gmail.com">Email</a>
+        <a href="https://github.com/DRBrecht/">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+      <p class="footer-meta">Built with Claude Code. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
