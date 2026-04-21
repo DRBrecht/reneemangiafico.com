@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Microsoft Certified: Azure AI Fundamentals (AI-900) — credential page for Renée Brecht-Mangiafico.">
+  <title>Microsoft Azure AI Fundamentals — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Case study page layout ── */
+
+    .cs-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .cs-back {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 2.5rem;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .cs-back:hover { color: var(--teal-accent); }
+
+    .cs-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .cs-eyebrow span { color: var(--teal-card-border); }
+
+    .cs-wrap h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--teal-dark);
+    }
+
+    .cs-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .cs-intro {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--teal-pale);
+      margin: 2rem 0;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Certificate image */
+    .cert-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--teal-card-border);
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Credential details */
+    .credential-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .credential-item {
+      background: var(--teal-pale);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .credential-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .credential-value {
+      font-size: 0.855rem;
+      color: var(--teal-dark);
+      font-weight: 500;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--teal-card-border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    /* Footer row */
+    .cs-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cs-attribution {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cs-attribution strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cs-cta {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .cs-cta:hover { border-bottom-color: var(--teal-accent); }
+
+    @media (max-width: 520px) {
+      .cs-wrap h1 { font-size: 1.5rem; }
+      .cs-footer-row { flex-direction: column; align-items: flex-start; }
+      .cs-wrap { padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-name">Renée Brecht-Mangiafico</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======= CONTENT ======= -->
+  <div class="cs-wrap">
+
+    <a href="portfolio.html" class="cs-back">← Back to portfolio</a>
+
+    <div class="cs-eyebrow">
+      <span>Credential</span>
+      <span>—</span>
+      <span>April 2026</span>
+    </div>
+
+    <h1>Microsoft Certified: Azure AI Fundamentals</h1>
+    <p class="cs-subtitle">Microsoft &nbsp;·&nbsp; AI-900 &nbsp;·&nbsp; Earned April 4, 2026</p>
+
+    <p class="cs-intro">The AI-900 certification validates foundational knowledge of machine learning and AI concepts, and the Microsoft Azure services used to implement them. It covers machine learning workloads, computer vision, natural language processing, generative AI, and responsible AI principles — providing a vendor-grounded framework for AI strategy and implementation work.</p>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Certificate</p>
+
+    <div class="cert-wrap">
+      <img src="images/Azure_AI_Fundamental_Cert.png" alt="Microsoft Certified: Azure AI Fundamentals certificate awarded to Renee Brecht-Mangiafico, April 4, 2026" />
+    </div>
+
+    <div class="credential-details">
+      <div class="credential-item">
+        <p class="credential-label">Credential ID</p>
+        <p class="credential-value">162790D60FA444D0</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-label">Certification number</p>
+        <p class="credential-value">3EE3CF-3EEF4A</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-label">Earned</p>
+        <p class="credential-value">April 4, 2026</p>
+      </div>
+      <div class="credential-item">
+        <p class="credential-label">Issued by</p>
+        <p class="credential-value">Microsoft</p>
+      </div>
+    </div>
+
+    <hr class="cs-divider">
+
+    <p class="cs-section-label">Domains covered</p>
+
+    <div class="tags">
+      <span class="tag">AI &amp; ML workloads on Azure</span>
+      <span class="tag">Machine learning fundamentals</span>
+      <span class="tag">Computer vision</span>
+      <span class="tag">Natural language processing</span>
+      <span class="tag">Generative AI</span>
+      <span class="tag">Azure AI services</span>
+      <span class="tag">Responsible AI principles</span>
+    </div>
+
+    <hr class="cs-divider">
+
+    <div class="cs-footer-row">
+      <p class="cs-attribution">
+        Earned by <strong>Renée Brecht-Mangiafico</strong> &nbsp;·&nbsp; Online verifiable credential
+      </p>
+      <a class="cs-cta" href="https://learn.microsoft.com/api/credentials/share/en-us/ReneeBrechtMangiafico-4805/162790D60FA444D0?sharingId=7ECD4226D9DE1EC2" target="_blank" rel="noopener">Verify credential →</a>
+    </div>
+
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Renée Brecht-Mangiafico</p>
+      <p class="footer-tagline">AI-Augmented Project Manager</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/">LinkedIn</a>
+        <a href="mailto:rbrecht.mangiafico@gmail.com">Email</a>
+        <a href="https://github.com/DRBrecht/">GitHub</a>
+      </nav>
+      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
+      <p class="footer-meta">Built with Claude Code. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
