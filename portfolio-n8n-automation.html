@@ -136,6 +136,18 @@
       color: var(--text);
     }
 
+    .workflow-link {
+      display: inline-block;
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .workflow-link:hover { border-bottom-color: var(--teal-accent); }
+
     /* Tags */
     .tags {
       display: flex;
@@ -251,24 +263,28 @@
         <p class="workflow-number">Workflow 01</p>
         <p class="workflow-title">Lead notification via Google Forms &amp; Gmail</p>
         <p>A form submission triggers an automated Gmail notification to the right person — instantly, without manual monitoring. Demonstrates webhook triggers, conditional routing, and Gmail API integration.</p>
+        <a class="workflow-link" href="https://www.youtube.com/watch?v=8H9z4GcKkAQ&list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH&index=1" target="_blank" rel="noopener">Watch workflow →</a>
       </div>
 
       <div class="workflow">
         <p class="workflow-number">Workflow 02</p>
         <p class="workflow-title">Email confirmation with audit trail</p>
         <p>Sends a confirmation email to the submitter and writes a timestamped record to a log — creating a lightweight audit trail with no database required. Demonstrates multi-step pipelines and data persistence.</p>
+        <a class="workflow-link" href="https://www.youtube.com/watch?v=B8RZo4H0KVI&list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH&index=2" target="_blank" rel="noopener">Watch workflow →</a>
       </div>
 
       <div class="workflow">
         <p class="workflow-number">Workflow 03</p>
         <p class="workflow-title">Form submission to confirmation</p>
         <p>An end-to-end intake workflow — form submission (via a platform such as JotForm) triggers automated confirmation messaging back to the user. Demonstrates third-party form integration and response automation.</p>
+        <a class="workflow-link" href="https://www.youtube.com/watch?v=TljVzoY_Fww&list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH&index=3" target="_blank" rel="noopener">Watch workflow →</a>
       </div>
 
       <div class="workflow">
         <p class="workflow-number">Workflow 04</p>
         <p class="workflow-title">AI-powered Q&amp;A for website embedding</p>
         <p>A user submits a question; the workflow routes it to an AI model and returns the answer — designed to be embedded in a website or platform as a lightweight AI assistant. Demonstrates Claude/OpenAI API chaining within an n8n pipeline.</p>
+        <a class="workflow-link" href="https://www.youtube.com/watch?v=7XRRZUu-aTg&list=PLUJ3FStFmGaqGbqSoCCdqVLyP6f1p-QhH&index=4" target="_blank" rel="noopener">Watch workflow →</a>
       </div>
 
     </div>
