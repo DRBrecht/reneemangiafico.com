@@ -650,6 +650,11 @@ main {
 
 @media (max-width: 768px) {
 
+  /* Prevent content from scrolling under the nav on mobile */
+  .site-nav {
+    position: relative;
+  }
+
   /* Mobile nav */
   .nav-links {
     display: none;
