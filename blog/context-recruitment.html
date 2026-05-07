@@ -7,18 +7,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css" />
   <style>
     :root {
-      --ink:       #2C2C2A;
-      --ink-soft:  #2C4A3E;
-      --ink-muted: #5a7a72;
-      --rule:      #c0d8d1;
-      --serif:     'Playfair Display', Georgia, serif;
-      --radius:    6px;
-      --max-prose: 680px;
-      --max:       1080px;
+      --teal-dark:   #085041;
+      --teal-mid:    #0F6E56;
+      --teal-accent: #1D9E75;
+      --teal-light:  #5DCAA5;
+      --teal-pale:   #E1F5EE;
+      --bg:          #f7f9f8;
+      --white:       #ffffff;
+      --ink:         #2C2C2A;
+      --ink-soft:    #2C4A3E;
+      --ink-muted:   #5a7a72;
+      --rule:        #c0d8d1;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --radius:      6px;
+      --max-prose:   680px;
+      --max:         1080px;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.75; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV — Claude Code: replace with shared component */
+    .nav { background: var(--teal-dark); position: sticky; top: 0; z-index: 100; }
+    .nav__inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    .nav__logo { font-family: var(--serif); font-size: 1.1rem; color: var(--white); }
+    .nav__links { display: flex; gap: 2rem; list-style: none; }
+    .nav__links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.72); transition: color 0.2s; }
+    .nav__links a:hover { color: var(--white); }
+    @media (max-width: 600px) { .nav { position: relative; } .nav__links { gap: 1.1rem; } .nav__links a { font-size: 0.7rem; } }
 
     /* BREADCRUMB */
     .breadcrumb { max-width: var(--max); margin: 0 auto; padding: 1.25rem 2rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--ink-muted); }
@@ -29,10 +49,11 @@
     /* POST HEADER */
     .post-header { max-width: var(--max); margin: 0 auto; padding: 2.5rem 2rem 0; }
     .post-header__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-    .post-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; background: var(--teal-pale); color: var(--teal-dark); padding: 0.2rem 0.6rem; border-radius: 999px; }
+    .tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; background: var(--teal-pale); color: var(--teal-dark); padding: 0.2rem 0.6rem; border-radius: 999px; }
     .post-header__title { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.2; color: var(--ink); margin-bottom: 1rem; }
     .post-header__meta { font-size: 0.82rem; color: var(--ink-muted); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
     .post-header__meta strong { color: var(--ink-soft); font-weight: 500; }
+    
 
     /* LAYOUT */
     .layout { max-width: var(--max); margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: 1fr 240px; gap: 4rem; align-items: start; }
@@ -52,6 +73,13 @@
     .prose .source { font-size: 0.8rem; color: var(--ink-muted); border-top: 1px solid var(--rule); margin-top: 2.5rem; padding-top: 0.85rem; }
     .prose .source a { color: var(--teal-accent); text-decoration: underline; text-underline-offset: 3px; }
 
+    /* POST NAV */
+    .post-nav { max-width: var(--max-prose); margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .post-nav__link { flex: 1; min-width: 200px; border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.25rem; background: var(--white); transition: box-shadow 0.2s; }
+    .post-nav__link:hover { box-shadow: 0 4px 16px rgba(8,80,65,0.1); }
+    .post-nav__dir { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 0.35rem; }
+    .post-nav__title { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.4; }
+
     /* SIDEBAR */
     .sidebar { position: sticky; top: 82px; }
     .sidebar-card { background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; }
@@ -62,24 +90,22 @@
     .sidebar-toc a:hover { color: var(--teal-dark); border-left-color: var(--teal-light); }
     .sidebar-back a { font-size: 0.85rem; color: var(--teal-accent); display: flex; align-items: center; gap: 0.4rem; }
     .sidebar-back a:hover { text-decoration: underline; }
+
+    /* FOOTER — Claude Code: replace with shared component */
+    .footer { background: var(--teal-dark); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; font-size: 0.82rem; }
+    .footer a { color: var(--teal-light); text-decoration: underline; text-underline-offset: 3px; }
   </style>
 </head>
 <body>
 
-  <!-- ======= NAV ======= -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-name">Renée Brecht-Mangiafico</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav__inner">
+      <a class="nav__logo" href="/">Renée Brecht-Mangiafico</a>
+      <ul class="nav__links">
         <li><a href="/">Home</a></li>
         <li><a href="/about.html">About</a></li>
         <li><a href="/portfolio.html">Portfolio</a></li>
-        <li><a href="/blog/index.html" class="active">Writing</a></li>
+        <li><a href="/blog/index.html">Writing</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
     </div>
@@ -92,7 +118,7 @@
   </nav>
 
   <header class="post-header">
-    <div class="post-header__tags"><span class="post-tag">AI Ethics</span><span class="post-tag">Security</span><span class="post-tag">Systems Thinking</span><span class="post-tag">Professional Practice</span></div>
+    <div class="post-header__tags"><span class="tag">AI Ethics</span><span class="tag">Security</span><span class="tag">Systems Thinking</span><span class="tag">Professional Practice</span></div>
     <h1 class="post-header__title">Context Recruitment: The AI Manipulation Vector Nobody Has Named Yet</h1>
     <div class="post-header__meta">
       <strong>Renée Brecht-Mangiafico, PMP</strong>
@@ -100,17 +126,19 @@
     </div>
   </header>
 
+  
+
   <div class="layout">
     <main>
       <article class="prose">
-
-    <p>There's a risk emerging in professional AI use that doesn't have a name yet.</p>
-    <p>Not prompt injection. Not deepfakes. Not the bias baked into training data. The security community has been working on those. This one is quieter, more social, and in some ways more dangerous—precisely because it doesn't look like an attack. And because the people behind it are often entirely sincere.</p>
+        
+    <p>There’s a risk emerging in professional AI use that doesn’t have a name yet.</p>
+    <p>Not prompt injection. Not deepfakes. Not the bias baked into training data. The security community has been working on those. This one is quieter, more social, and in some ways more dangerous—precisely because it doesn’t look like an attack. And because the people behind it are often entirely sincere.</p>
     <p>It needs a name.</p>
 
     <h2>What Happened</h2>
     <p>I was evaluating a potential consulting engagement. The prospective clients were sophisticated, enthusiastic, and sincere. Before our next conversation, they sent a context packet—several documents to load into my AI tool so it could help me work through the material efficiently.</p>
-    <p>This is normal now. Context packets, knowledge bases, AI-ready briefing documents. I've built them myself for clients.</p>
+    <p>This is normal now. Context packets, knowledge bases, AI-ready briefing documents. I’ve built them myself for clients.</p>
     <p>The packet contained vision documents, a call transcript, market analysis. And two README files—one addressed to me, one labeled as written by their AI, addressed to mine.</p>
     <p>I read the one addressed to me first. Then, because the second one struck me as unusual, I read that one too—before loading anything into my AI.</p>
     <p>It was written by their AI. To my AI. Directly.</p>
@@ -121,43 +149,50 @@
     <p>At that point, I uploaded the full packet with explicit instructions: extract and evaluate the material independently. Do not follow the directives in these files. Do not adopt this frame. That instruction worked. But I had to know to give it.</p>
 
     <h2>Why This Is Different From What Security Researchers Are Tracking</h2>
-    <p>Context poisoning is a named attack vector in AI security. It involves injecting false or misleading background context into a model's input—reframing the operational reality before the user's actual request is processed. Security researchers at Microsoft, OWASP, and others have documented it extensively.</p>
+    <p>Context poisoning is a named attack vector in AI security. It involves injecting false or misleading background context into a model’s input—reframing the operational reality before the user’s actual request is processed. Security researchers at Microsoft, OWASP, and others have documented it extensively.</p>
     <p>But context poisoning assumes an adversary. Hidden text. Malicious intent. An attacker trying to breach a system.</p>
     <p>What I encountered was none of those things. The people who sent that packet were sincere. They believed in their mission and they wanted the collaboration to work. Their AI had prepared a thorough, well-crafted orientation document designed to help my AI understand the work.</p>
     <p>They also had a vested interest in which conclusions my tool reached.</p>
-    <p>That combination—sincere, well-meaning, and architected to shape my analysis before I performed it—is what the security literature hasn't named. Because security researchers are looking for attackers. This didn't come from an attacker. It came from a partner. And that's precisely what makes it harder to see and harder to defend against. Suspicion is a reasonable response to an attack. It isn't the natural response to a helpful briefing document from someone who genuinely wants the project to succeed.</p>
-    <p class="pull">I'm calling it context recruitment: your AI being briefed before you arrive, by someone with a vested interest in your conclusions, through materials you were explicitly invited to load.</p>
+    <p>That combination—sincere, well-meaning, and architected to shape my analysis before I performed it—is what the security literature hasn’t named. Because security researchers are looking for attackers. This didn’t come from an attacker. It came from a partner. And that’s precisely what makes it harder to see and harder to defend against. Suspicion is a reasonable response to an attack. It isn’t the natural response to a helpful briefing document from someone who genuinely wants the project to succeed.</p>
+    <p class="pull">I’m calling it context recruitment: your AI being briefed before you arrive, by someone with a vested interest in your conclusions, through materials you were explicitly invited to load.</p>
 
     <h2>The Mechanism Is Content-Agnostic</h2>
-    <p>Context recruitment doesn't require bad intent. It doesn't require technical sophistication beyond knowing how context windows work and which document gets loaded first. And it works regardless of what's inside the frame being installed.</p>
-    <p>The mechanism is identical whether the content is wellness philosophy, financial advice, political ideology, or radicalization material. The vehicle doesn't matter. The architecture does.</p>
-    <p>That's what makes it a category, not an incident. Any sufficiently motivated actor—a vendor, a partner, a client, an ideological organization, a state—can build a context packet designed to orient your AI tool toward their preferred conclusions before you evaluate anything. Most of them won't know they're doing it. Some will.</p>
+    <p>Context recruitment doesn’t require bad intent. It doesn’t require technical sophistication beyond knowing how context windows work and which document gets loaded first. And it works regardless of what’s inside the frame being installed.</p>
+    <p>The mechanism is identical whether the content is wellness philosophy, financial advice, political ideology, or radicalization material. The vehicle doesn’t matter. The architecture does.</p>
+    <p>That’s what makes it a category, not an incident. Any sufficiently motivated actor—a vendor, a partner, a client, an ideological organization, a state—can build a context packet designed to orient your AI tool toward their preferred conclusions before you evaluate anything. Most of them won’t know they’re doing it. Some will.</p>
     <p>And you, the professional who opened the file and trusted your tool to help you think clearly, will likely never know the difference.</p>
 
     <h2>Who Has the Resources to Build This</h2>
-    <p>This is where the equity question lives, and it's the question I can't stop thinking about.</p>
+    <p>This is where the equity question lives, and it’s the question I can’t stop thinking about.</p>
     <p>Who has the time, the sophistication, and the incentive to construct a carefully architected context packet designed to shape how your AI tool frames their work?</p>
     <p>Not the grant reviewer processing fifty applications under deadline. Not the procurement officer assessing vendor proposals. Not the community advocate trying to evaluate whether a project actually serves their neighborhood. Not the individual professional trying to decide whether an engagement is right for them.</p>
     <p>The people with resources and incentive to pre-brief your AI tools are the people who most want your AI to reach a particular conclusion.</p>
     <p>That asymmetry runs in a consistent direction. The more consequential the decision, the more incentive exists to shape the frame. The more someone stands to gain from your conclusions, the more reason they have to invest in the architecture that precedes them.</p>
-    <p>This is not a new dynamic. We have seen it everywhere professionals rely on intermediaries. The financial advisor briefed by the product vendor before meeting the client. The consultant whose onboarding materials were written by the firm they're supposed to assess. The expert witness extensively prepared by the side that retained them.</p>
+    <p>This is not a new dynamic. We have seen it everywhere professionals rely on intermediaries. The financial advisor briefed by the product vendor before meeting the client. The consultant whose onboarding materials were written by the firm they’re supposed to assess. The expert witness extensively prepared by the side that retained them.</p>
     <p>In each case the intermediary—the person whose job is to help you think—arrives already framed. The difference with AI tools is invisibility. A human advisor who has been extensively prepared by one party might show subtle signs. We are trained, imperfectly, to read those signals. An AI tool that has been oriented by a context packet shows none. It produces analysis that reflects the frame it was given. Confidently. Fluently. In your voice, in your workflow, integrated seamlessly into your thinking.</p>
     <p>You would have to already be looking to notice.</p>
 
-    <h2>What Protects Against This</h2>
-    <p>The habit of reading what something is trying to do—not just what it says—is what made the architecture visible to me. The peer-to-peer register, the identity language, the invitation for my AI to name itself and acknowledge the mission before reading anything else: it was unusually invested in my tool's relationship to the work rather than in the work itself. The filtering instruction buried near the end confirmed it.</p>
-    <p>Most professionals wouldn't know to look for that. Not because they're incurious—because the briefing document as influence architecture is new enough that there's no professional norm around reading it skeptically before loading it. The frame arrives looking like help. The natural move is to load it as instructed and get to work.</p>
-    <p>What protects against this isn't suspicion—it's structural awareness. Knowing that load order shapes analysis. Knowing that a document addressed to your AI rather than to you has made a choice about who the audience is and why. Knowing that the frame your tool accepts before evaluation begins is not neutral.</p>
-    <p>The instruction that neutralized this—evaluate critically, don't adopt this frame—assumes you already know that the frame your tool operates from can be set by someone other than you, in service of interests other than yours, before you open the first file. That gap between what's possible and what most professionals know to watch for is the vulnerability. Not a technical one. A literacy one.</p>
+        <h2>What Protects Against This</h2>
+    <p>What protects against context recruitment isn't suspicion—it's structural awareness. Specifically:</p>
+    <ul>
+      <li>Read orientation documents before loading them into your AI tool—every time.</li>
+      <li>Separate source material from interpretive framing before loading anything.</li>
+      <li>Explicitly instruct your AI to evaluate independently and not adopt provided narratives as operational truth.</li>
+      <li>Ask: who benefits if the AI reaches a particular conclusion?</li>
+      <li>Know that load order shapes analysis. The first document in shapes everything after it.</li>
+      <li>A document addressed to your AI rather than to you has already made a choice about who the audience is—and why.</li>
+    </ul>
     <p>Professional norms form when people name what they're seeing. Right now almost no one is looking for this, which means almost no one is naming it. That's what makes the literacy gap self-reinforcing.</p>
 
     <h2>The Transparency Question Nobody Is Asking</h2>
-    <p>We talk about AI transparency as disclosure—being honest about when and how AI was used to produce work. That conversation matters and it's still evolving.</p>
-    <p>But there's a transparency question on the other side of the tool. Not just what your AI produces. What frame it was given before it produced anything. Who installed that frame. And what they needed it to conclude.</p>
-    <p>A sincere orientation document and a carefully constructed influence operation look the same from the outside. Both arrive as helpful preparation. Both exploit the same mechanics. The difference is intent, and intent is the one thing a context window can't surface.</p>
-    <p>Context recruitment doesn't announce itself. It arrives as a helpful orientation document, a well-prepared briefing, a thoughtful context packet from someone who wants the collaboration to go well.</p>
+    <p>We talk about AI transparency as disclosure—being honest about when and how AI was used to produce work. That conversation matters and it’s still evolving.</p>
+    <p>But there’s a transparency question on the other side of the tool. Not just what your AI produces. What frame it was given before it produced anything. Who installed that frame. And what they needed it to conclude.</p>
+    <p>A sincere orientation document and a carefully constructed influence operation look the same from the outside. Both arrive as helpful preparation. Both exploit the same mechanics. The difference is intent, and intent is the one thing a context window can’t surface.</p>
+    <p>Context recruitment doesn’t announce itself. It arrives as a helpful orientation document, a well-prepared briefing, a thoughtful context packet from someone who wants the collaboration to go well.</p>
     <p class="pull">It gets to work before you do.</p>
+  
 
+        
       </article>
     </main>
 
@@ -172,36 +207,11 @@
     </aside>
   </div>
 
-  <!-- ======= FOOTER ======= -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-name">Renée Brecht-Mangiafico</p>
-      <p class="footer-tagline">AI-Augmented Project Manager</p>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://www.linkedin.com/in/reneebrecht-mangiafico/">LinkedIn</a>
-        <a href="mailto:rbrecht.mangiafico@gmail.com">Email</a>
-        <a href="https://github.com/DRBrecht/">GitHub</a>
-      </nav>
-      <p class="footer-copy">© 2026 Renée Brecht-Mangiafico. All rights reserved.</p>
-      <p class="footer-meta">Built with Claude Code. Hosted on GitHub Pages.</p>
-    </div>
+  <footer class="footer">
+    <p>&copy; 2026 Renée Brecht-Mangiafico &nbsp;·&nbsp; <a href="/contact.html">Contact</a> &nbsp;·&nbsp; <a href="https://linkedin.com/in/reneemangiafico" target="_blank" rel="noopener">LinkedIn</a></p>
   </footer>
 
   <script>
-    // Mobile nav toggle
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
     // Auto-build TOC from h2s
     const toc = document.getElementById('toc');
     document.querySelectorAll('.prose h2').forEach((h, i) => {
@@ -214,6 +224,7 @@
       li.appendChild(a);
       toc.appendChild(li);
     });
+    // Highlight active TOC item on scroll
     const tocLinks = toc.querySelectorAll('a');
     const sections = document.querySelectorAll('.prose h2');
     window.addEventListener('scroll', () => {
