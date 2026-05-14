@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Gets to Teach the Machine Right from Wrong? — Renée Brecht-Mangiafico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal-dark:   #085041;
+      --teal-mid:    #0F6E56;
+      --teal-accent: #1D9E75;
+      --teal-light:  #5DCAA5;
+      --teal-pale:   #E1F5EE;
+      --bg:          #fafaf8;
+      --white:       #ffffff;
+      --ink:         #1a1a18;
+      --ink-soft:    #2C4A3E;
+      --ink-muted:   #666;
+      --rule:        #e0e0da;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --max:         1080px;
+      --prose:       680px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      background: var(--teal-dark);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav__inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 62px;
+    }
+    .nav__logo {
+      font-family: var(--serif); font-size: 1.05rem;
+      color: var(--white); letter-spacing: 0.01em;
+    }
+    .nav__links { display: flex; gap: 2rem; list-style: none; }
+    .nav__links a {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.72); transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--white); }
+    .nav__links a[aria-current] {
+      color: var(--white);
+      border-bottom: 2px solid var(--teal-light);
+      padding-bottom: 2px;
+    }
+    @media (max-width: 600px) {
+      .nav { position: relative; }
+      .nav__links { gap: 1.1rem; }
+      .nav__links a { font-size: 0.72rem; }
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      max-width: var(--max); margin: 0 auto;
+      padding: 1.25rem 2rem 0;
+      font-family: var(--sans); font-size: 0.78rem;
+      color: var(--ink-muted); letter-spacing: 0.03em;
+    }
+    .breadcrumb a { color: var(--teal-mid); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* ARTICLE LAYOUT */
+    .article-wrap {
+      max-width: var(--max); margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr min(var(--prose), 100%) 1fr;
+    }
+    .article-wrap > * { grid-column: 2; }
+
+    /* HEADER */
+    .post-meta {
+      font-family: var(--sans); font-size: 0.75rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 0.9rem;
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+    }
+    .post-meta .tag {
+      background: var(--teal-pale); color: var(--teal-dark);
+      padding: 0.2rem 0.65rem; border-radius: 2rem;
+      font-size: 0.7rem; letter-spacing: 0.06em;
+      text-transform: uppercase; font-weight: 500;
+    }
+
+    h1.post-title {
+      font-family: var(--serif); font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 600; line-height: 1.2;
+      color: var(--ink); margin-bottom: 1.25rem;
+    }
+
+    .post-byline {
+      font-family: var(--sans); font-size: 0.85rem;
+      color: var(--ink-muted); margin-bottom: 2.5rem;
+      padding-bottom: 2rem; border-bottom: 1px solid var(--rule);
+    }
+
+    /* PROSE */
+    .prose p {
+      font-size: 1.05rem; line-height: 1.78;
+      color: var(--ink); margin-bottom: 1.5rem;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose em { font-style: italic; }
+
+    .prose .section-break {
+      border: none; border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* PULL QUOTE */
+    .prose blockquote {
+      border-left: 3px solid var(--teal-accent);
+      margin: 2rem 0;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* BIO */
+    .post-bio {
+      margin-top: 3rem; padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 0.88rem;
+      color: var(--ink-muted); font-style: italic;
+    }
+
+    /* BIBLIOGRAPHY */
+    .bibliography {
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .bibliography h2 {
+      font-family: var(--sans); font-size: 0.75rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .bibliography ol {
+      list-style: none; padding: 0;
+    }
+    .bibliography li {
+      font-family: var(--sans); font-size: 0.85rem;
+      color: var(--ink-muted); line-height: 1.65;
+      margin-bottom: 0.85rem; padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .bibliography li a {
+      color: var(--teal-mid); word-break: break-all;
+    }
+    .bibliography li a:hover { text-decoration: underline; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 3rem;
+      font-family: var(--sans); font-size: 0.82rem;
+      font-weight: 500; letter-spacing: 0.04em;
+      color: var(--teal-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--teal-dark); }
+    .back-link::before { content: '←'; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--teal-dark); color: rgba(255,255,255,0.55);
+      text-align: center; padding: 2rem;
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    .footer a { color: rgba(255,255,255,0.72); }
+    .footer a:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav__inner">
+      <a href="/index.html" class="nav__logo">Renée Brecht-Mangiafico</a>
+      <ul class="nav__links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/portfolio/index.html">Portfolio</a></li>
+        <li><a href="/blog/index.html" aria-current="page">Writing</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="/blog/index.html">Writing</a>
+    <span>›</span>
+    Who Gets to Teach the Machine Right from Wrong?
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="article-wrap">
+    <article>
+
+      <div class="post-meta">
+        <time datetime="2026-05-14">May 14, 2026</time>
+        <span class="tag">AI Ethics</span>
+        <span class="tag">Philosophy</span>
+        <span class="tag">Governance</span>
+      </div>
+
+      <h1 class="post-title">Who Gets to Teach the Machine Right from Wrong?</h1>
+
+      <p class="post-byline">By Renée Brecht-Mangiafico</p>
+
+      <div class="prose">
+
+        <p>Last week, representatives from Anthropic and OpenAI sat down with religious leaders from across the theological spectrum — Hindu, Baha'i, Sikh, Greek Orthodox, Mormon — for what was billed as the inaugural "Faith-AI Covenant" roundtable in New York. Organized by the Geneva-based Interfaith Alliance for Safer Communities, the stated goal was to figure out how to infuse morality and ethics into fast-developing artificial intelligence. More roundtables are planned in Beijing, Nairobi, and Abu Dhabi.</p>
+
+        <p>It's a striking image. The architects of systems reshaping how humanity works, thinks, and communicates, sitting across from representatives of traditions that have been thinking about human nature for millennia. Easy to mock. Easy to celebrate. Having spent time seriously in both worlds, I'm skeptical of how casually each is being invoked here.</p>
+
+        <p>There is a real argument for bringing religious and philosophical traditions into conversations about AI ethics, and it deserves to be made honestly before it's interrogated. Religious traditions have spent centuries wrestling with questions that AI developers are only beginning to ask in earnest: What do we owe each other? Who bears responsibility for harm caused at a distance, through systems we design but do not fully control? What does it mean to act justly under conditions of radical uncertainty? These are not engineering questions. They are not market questions. And the frameworks that dominate Silicon Valley — optimization, scale, user engagement — are, on their own, morally impoverished.</p>
+
+        <blockquote>Aristotle identified something in the <em>Nicomachean Ethics</em> that remains stubbornly relevant: practical wisdom, what he called <em>phronesis</em>, cannot be reduced to rules. It is a capacity developed through experience, judgment, and character. You cannot encode phronesis. You can only cultivate it, in people, over time.</blockquote>
+
+        <p>More fundamentally: AI systems already encode values. They do this through training data, moderation policies, human feedback loops, edge case decisions made by engineers under deadline pressure. The question was never whether AI has values. It has always been whose values, and who decided.</p>
+
+        <hr class="section-break" />
+
+        <p>In 2021, researchers at the Allen Institute for AI released a system called Delphi. Its purpose was audacious: generate moral judgments about ethical scenarios submitted by users. Ask it whether it's acceptable to steal bread to feed a starving child. Ask it whether lying to protect someone's feelings is justified. Delphi would return a verdict — it's okay, it's wrong, it depends.</p>
+
+        <p>The results were instructive, and not in the way the researchers intended. Delphi produced outputs that were biased, contradictory, and at times genuinely disturbing — confidently delivering judgments that reflected the particular demographics and assumptions baked into its training data rather than anything resembling moral reasoning. It had learned to sound like moral authority while doing something categorically different: pattern-matching on aggregated human opinion.</p>
+
+        <p>Ludwig Wittgenstein observed that if a lion could speak, we could not understand him — because genuine comprehension is inseparable from the form of life that generates it. Delphi inverts the problem. It speaks our language with apparent fluency. But the fluency is the trap. It creates a false sense of moral presence, the impression that something is reasoning when it is calculating, that something is judging when it is predicting.</p>
+
+        <p>Hannah Arendt's concept of the banality of evil is uncomfortable to invoke but difficult to avoid. Arendt's insight was that catastrophic harm does not require malice — it requires only thoughtlessness, the suspension of genuine moral reasoning in favor of procedural compliance. A system that processes ethical questions at scale without the capacity for genuine reasoning is not evil. It is something potentially more dangerous: thoughtlessness institutionalized, automated, and deployed at speed.</p>
+
+        <p>Delphi was, at its core, an attempt at mechanistic casuistry — the case-based moral reasoning with deep roots in Catholic and Jewish ethical traditions. But casuistry, properly practiced, is not a lookup table. It is a discipline embedded in interpretive community, sustained by centuries of argument, and held accountable by the ongoing practice of asking why, not just what. Delphi extracted the form and discarded the substance. What remained told us less about machine morality than about the limits of reducing ethics to prediction.</p>
+
+        <hr class="section-break" />
+
+        <p>Which brings us to what makes the Faith-AI Covenant genuinely difficult, and it isn't primarily technical. Religious traditions do not agree with each other. More importantly, they do not agree within themselves — on gender and authority, on punishment and mercy, on the nature of conscience and the limits of forgiveness, on whether moral truth is discovered or revealed, absolute or contextual, universal or communal.</p>
+
+        <p>Thomas Aquinas built the most systematic moral theology the Western tradition has produced, and even within Thomism, applying principle to particular cases requires <em>prudentia</em> — a situated, embodied, relational judgment that cannot be formalized without remainder. If the most architecturally rigorous tradition in Western ethics resists full codification, what exactly are we expecting a language model to capture?</p>
+
+        <p>Isaiah Berlin spent much of his intellectual life on a related problem: that genuinely important human values are sometimes irreconcilable, not because we haven't thought hard enough, but because the conflict is real. Liberty and equality. Justice and mercy. Tradition and progress. Berlin's point was not that we should stop trying to choose well. It was that we should stop expecting a unified framework to resolve the tension for us.</p>
+
+        <p>The skeptics of the Faith-AI Covenant raise a sharper version of this concern. Rumman Chowdhury, CEO of Humane Intelligence and former U.S. science envoy for AI, has called these efforts at best a distraction, at worst a way of diverting attention from structural questions about power and accountability that ethics language tends to obscure. There is a name for that pattern: ethics washing — the substitution of values discourse for governance, of roundtables for regulation, of principles documents for accountability mechanisms. The concern is not that religion has nothing to offer. It is that no single moral authority — religious, corporate, governmental, or algorithmic — should govern systems this powerful without pluralism, transparency, and genuine accountability structures.</p>
+
+        <hr class="section-break" />
+
+        <p>John Rawls proposed a useful thought experiment: imagine designing the principles that will govern a society without knowing where in that society you will be born — your class, your culture, your tradition. What principles would you choose from behind that veil of ignorance? The question translates uncomfortably but usefully to AI governance. If you did not know which tradition or value system would be embedded in the systems governing your information environment, your medical decisions, your employment prospects — what oversight structures would you demand? The answer is probably not whichever tradition was best represented in the room that day.</p>
+
+        <p>A more durable approach involves pluralistic input, not as compromise but as epistemological necessity. Religious perspectives bring centuries of moral reflection. Secular philosophy brings frameworks for interrogating assumptions. Democratic oversight brings legitimacy. Legal governance brings accountability. Technical safeguards bring constraint. Transparency makes all of it auditable. The goal is not consensus, which may be impossible, but structured accountability across multiple frameworks simultaneously. Worth naming too: the most concerning version of this story isn't religion influencing AI. It is AI becoming the moral authority — treated as oracle, as arbiter, as the system beyond which there is no appeal.</p>
+
+        <hr class="section-break" />
+
+        <p>Simone Weil wrote that attention is the rarest and purest form of generosity. She meant something precise: a quality of presence directed at a particular person, in a particular moment, that perceives what that person actually needs rather than what we expect or prefer them to need. It is irreducibly particular. It is an act of will as much as perception. It is exactly what no system optimized for scale can replicate — not because the engineers aren't trying, but because the architecture works against it.</p>
+
+        <p>I've sat in rooms where AI systems get shaped at the implementation level — not at roundtables, but in working sessions where someone has to decide which edge cases to prioritize, which harms to weight more heavily, which communities get included in testing, whose complaints get escalated and whose get closed. Those decisions are where values actually land. The Faith-AI Covenant is a conversation at altitude. It can surface frameworks, name stakes, build relationships across communities that rarely talk to each other. That has value. But it doesn't answer the ground-level question that matters most: who is in that room, what are they accountable to, and when something goes wrong, who gets to say so?</p>
+
+        <p>Religious traditions have spent millennia asking who bears responsibility for harm. That is exactly the right question. The challenge is ensuring the answer is structural, plural, and enforceable — not ceremonial.</p>
+
+      </div><!-- /.prose -->
+
+      <div class="post-bio">
+        Renée Brecht-Mangiafico is an AI strategy and implementation consultant and PMP-certified project manager specializing in government and institutional digital transformation.
+      </div>
+
+      <div class="bibliography">
+        <h2>Bibliography</h2>
+        <ol>
+          <li>Fauria, Krysta. "Tech Is Turning Increasingly to Religion in a Quest to Create Ethical AI." <em>Associated Press</em>, May 7, 2026. <a href="https://apnews.com/article/ai-artificial-intelligence-ethics-religion-roundtable-053a44133c64703f83fd50c9ee6124ea" target="_blank" rel="noopener">https://apnews.com/article/ai-artificial-intelligence-ethics-religion-roundtable-053a44133c64703f83fd50c9ee6124ea</a>. Accessed May 14, 2026.</li>
+          <li>Fauria, Krysta. "OpenAI and Anthropic Just Met with Religious Leaders at the 'Faith-AI Covenant.' Here's Why." <em>Fast Company</em>, May 8, 2026. <a href="https://www.fastcompany.com/91538977/openai-anthropic-just-met-religious-leaders-faith-ai-covenant-heres-why" target="_blank" rel="noopener">https://www.fastcompany.com/91538977/openai-anthropic-just-met-religious-leaders-faith-ai-covenant-heres-why</a>. Accessed May 14, 2026.</li>
+        </ol>
+      </div>
+
+      <a href="/blog/index.html" class="back-link">Back to Writing</a>
+
+    </article>
+  </div><!-- /.article-wrap -->
+
+  <footer class="footer">
+    <p>&copy; 2026 Renée Brecht-Mangiafico &nbsp;·&nbsp; <a href="/index.html">reneemangiafico.com</a></p>
+  </footer>
+
+</body>
+</html>
